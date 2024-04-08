@@ -1,4 +1,4 @@
-package dev.micfro.hotelmanager.payroll;
+package dev.micfro.hotelmanager.databaseLoader;
 
 import dev.micfro.hotelmanager.entity.Hotelzimmer;
 import dev.micfro.hotelmanager.service.HotelzimmerService;
@@ -6,10 +6,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DatabaseLoader implements CommandLineRunner {
+public class HotelzimmerDatabaseLoader implements CommandLineRunner {
  private final HotelzimmerService hotelzimmerService;
 
-    public DatabaseLoader(HotelzimmerService hotelzimmerService) {
+    public HotelzimmerDatabaseLoader(HotelzimmerService hotelzimmerService) {
         this.hotelzimmerService = hotelzimmerService;
     }
 
