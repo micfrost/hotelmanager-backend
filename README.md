@@ -55,3 +55,6 @@ The application provides detailed error responses for various exceptions such as
 
 ## Author
 Created by Michal Frost.
+
+![Screenshot from 2024-04-10 23-22-19.png](src%2Fmain%2Fresources%2FImagesDemo%2FScreenshot%20from%202024-04-10%2023-22-19.png)
+![Screenshot from 2024-04-10 23-22-24.png](src%2Fmain%2Fresources%2FImagesDemo%2FScreenshot%20from%202024-04-10%2023-22-24.png)
