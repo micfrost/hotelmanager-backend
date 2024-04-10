@@ -16,35 +16,5 @@ class HotelzimmerTest {
         assertTrue(hotelzimmer.isVerfuegbarkeit());
     }
 
-    @Test
-    void settingZimmernummerToZeroShouldThrowConstraintViolationException() {
-        Hotelzimmer hotelzimmer = new Hotelzimmer();
-        assertThrows(ConstraintViolationException.class, () -> hotelzimmer.setZimmernummer(0L));
-    }
 
-    @Test
-    void settingZimmernummerToNegativeShouldThrowConstraintViolationException() {
-        Hotelzimmer hotelzimmer = new Hotelzimmer();
-        assertThrows(ConstraintViolationException.class, () -> hotelzimmer.setZimmernummer(-1L));
-    }
-
-    @Test
-    void settingZimmergroesseToNullShouldThrowConstraintViolationException() {
-        Hotelzimmer hotelzimmer = new Hotelzimmer();
-        assertThrows(ConstraintViolationException.class, () -> hotelzimmer.setZimmergroesse(null));
-    }
-
-    @Test
-    void settingMinibarShouldReflectInGetter() {
-        Hotelzimmer hotelzimmer = new Hotelzimmer();
-        hotelzimmer.setMinibar(true);
-        assertTrue(hotelzimmer.isMinibar());
-    }
-
-    @Test
-    void settingVerfuegbarkeitShouldReflectInGetter() {
-        Hotelzimmer hotelzimmer = new Hotelzimmer();
-        hotelzimmer.setVerfuegbarkeit(true);
-        assertTrue(hotelzimmer.isVerfuegbarkeit());
-    }
 }

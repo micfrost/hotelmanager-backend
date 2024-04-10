@@ -2,6 +2,9 @@ package dev.micfro.hotelmanager.exception;
 
 public class HotelzimmerException {
 
+    // Exception class to handle custom exceptions
+
+    // Fields to store error message, status code, and timestamp
     private String message;
     private int status;
     private long timeStamp;
@@ -10,6 +13,7 @@ public class HotelzimmerException {
     public HotelzimmerException() {
     }
 
+    // Parameterized constructor
     public HotelzimmerException(String message, int status, long timeStamp) {
         this.message = message;
         this.status = status;

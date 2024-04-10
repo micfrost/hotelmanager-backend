@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 
 import java.util.List;
@@ -24,21 +25,22 @@ public class HotelzimmerRestController {
         this.hotelzimmerService = hotelzimmerService;
     }
 
-    // CRUD
+    // CRUD OPERATIONS
 
-    // READ
+    // READ ALL
     @GetMapping("/hotelzimmer")
     public List<Hotelzimmer> findAll() {
         return hotelzimmerService.findAll();
     }
 
-
+    // READ BY ID
     @GetMapping("/hotelzimmer/{hotelzimmerId}")
     public Hotelzimmer getHotelzimmerById(@PathVariable Long hotelzimmerId) {
-
         Hotelzimmer hotelzimmer = hotelzimmerService.findById(hotelzimmerId);
 
+        // Check if the hotelzimmer is not found
         if ((hotelzimmerId >= hotelzimmerService.findAll().size()+1) || (hotelzimmerId <= 0))  {
+            // Throw custom exception if hotelzimmer is not found
             throw new HotelzimmerNotFoundExceptions("Hotelzimmer mit der Nummer " + hotelzimmerId + " wurde leider nicht gefunden.");
         }
 
@@ -62,20 +64,26 @@ public class HotelzimmerRestController {
     // DELETE
     @DeleteMapping("/hotelzimmer/{hotelzimmerId}")
     public String deleteHotelzimmerById(@PathVariable Long hotelzimmerId) {
-        Hotelzimmer hotelzimmer = hotelzimmerService.findById(hotelzimmerId);
+
+        // Check if the hotelzimmer is not found
         if ((hotelzimmerId >= hotelzimmerService.findAll().size()+1) || (hotelzimmerId <= 0))  {
+            // Throw custom exception if hotelzimmer is not found
             throw new HotelzimmerNotFoundExceptions("Hotelzimmer mit der Nummer " + hotelzimmerId + " wurde leider nicht gefunden.");
         }
         hotelzimmerService.deleteById(hotelzimmerId);
         return "Hotelzimmer mit der Nummer " + hotelzimmerId + " wurde erfolgreich gelöscht.";
     }
 
-
+    // Exception handling methods
     // Not found exception
     @ExceptionHandler
     public ResponseEntity<HotelzimmerException> handleException(HotelzimmerNotFoundExceptions e) {
-        HotelzimmerException exceptions = new HotelzimmerException();
 
+        // Handle HotelzimmerNotFoundExceptions and return a ResponseEntity with a custom HotelzimmerException
+        // object containing the exception message, status and timestamp to see in response body (JSON) in Postman
+
+        // Creating a custom HotelzimmerException to encapsulate the error details
+        HotelzimmerException exceptions = new HotelzimmerException();
         exceptions.setMessage("Exception: " + e.getMessage());
         exceptions.setStatus(HttpStatus.NOT_FOUND.value());
         exceptions.setTimeStamp(System.currentTimeMillis()
@@ -84,12 +92,28 @@ public class HotelzimmerRestController {
         return new ResponseEntity<>(exceptions, HttpStatus.NOT_FOUND);
     }
 
+    // type mismatch exception
+    @ExceptionHandler
+    public ResponseEntity<HotelzimmerException> handleException(MethodArgumentTypeMismatchException e) {
+
+        // Handle MethodArgumentTypeMismatchException and return a ResponseEntity with a custom HotelzimmerException
+        // object containing the exception message, status and timestamp to see in response body (JSON) in Postman
+        HotelzimmerException exceptions = new HotelzimmerException();
+        exceptions.setMessage("Invalid request parameter: " + e.getName());
+        exceptions.setStatus(HttpStatus.BAD_REQUEST.value());
+        exceptions.setTimeStamp(System.currentTimeMillis()
+        );
+        return new ResponseEntity<>(exceptions, HttpStatus.BAD_REQUEST);
+    }
+
     // any else exception
     @ExceptionHandler
     public ResponseEntity<HotelzimmerException> handleException(Exception e) {
-        HotelzimmerException exceptions = new HotelzimmerException();
 
-        exceptions.setMessage(e.getMessage());
+        // Handle other exceptions and return a ResponseEntity with a custom HotelzimmerException
+        // object containing the exception message, status and timestamp to see in response body (JSON) in Postman
+        HotelzimmerException exceptions = new HotelzimmerException();
+        exceptions.setMessage("Exception: " + e.getMessage());
         exceptions.setStatus(HttpStatus.BAD_REQUEST.value());
         exceptions.setTimeStamp(System.currentTimeMillis()
         );

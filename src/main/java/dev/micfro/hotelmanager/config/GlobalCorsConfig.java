@@ -13,11 +13,14 @@ public class GlobalCorsConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:3000")
-                        .allowedMethods("GET", "POST", "PUT", "DELETE" )
-                        .allowedHeaders("*")
-                        .allowCredentials(true);
+
+                // Configure CORS for allowing requests from http://localhost:3000
+
+                registry.addMapping("/**")  // Mapping for all endpoints
+                        .allowedOrigins("http://localhost:3000")  // Allowing requests from localhost:3000
+                        .allowedMethods("GET", "POST", "PUT", "DELETE")  // Allowing specified HTTP methods
+                        .allowedHeaders("*")  // Allowing all headers
+                        .allowCredentials(true);  // Allowing credentials like cookies, authorization headers, etc.
             }
         };
     }

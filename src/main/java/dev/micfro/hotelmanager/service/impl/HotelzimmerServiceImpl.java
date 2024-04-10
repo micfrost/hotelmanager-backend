@@ -20,7 +20,7 @@ public class HotelzimmerServiceImpl implements HotelzimmerService {
         this.hotelzimmerRepository = hotelzimmerRepository;
     }
 
-    // CRUD
+    // CRUD OPERATIONS
     // CREATE
     @Transactional
     @Override
@@ -41,9 +41,11 @@ public class HotelzimmerServiceImpl implements HotelzimmerService {
         Optional<Hotelzimmer> result = hotelzimmerRepository.findById(theId);
         Hotelzimmer hotelzimmer = null;
 
+        // Check if the result is present
         if (result.isPresent()) {
             hotelzimmer = result.get();
         } else {
+            // Throw a runtime exception if the hotelzimmer with the given ID is not found
             throw new RuntimeException("Hotelzimmer mit der Nummer " + theId + " wurde  leider nicht gefunden.");
         }
         return hotelzimmer;
