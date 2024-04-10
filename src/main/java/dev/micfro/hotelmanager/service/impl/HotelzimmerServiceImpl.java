@@ -1,7 +1,7 @@
 package dev.micfro.hotelmanager.service.impl;
 
 import dev.micfro.hotelmanager.model.Hotelzimmer;
-import dev.micfro.hotelmanager.repositor.HotelzimmerRepository;
+import dev.micfro.hotelmanager.repository.HotelzimmerRepository;
 import dev.micfro.hotelmanager.service.HotelzimmerService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +21,6 @@ public class HotelzimmerServiceImpl implements HotelzimmerService {
     }
 
     // CRUD
-
-
     // CREATE
     @Transactional
     @Override

@@ -1,4 +1,4 @@
-package dev.micfro.hotelmanager.repositor;
+package dev.micfro.hotelmanager.repository;
 
 import dev.micfro.hotelmanager.model.Hotelzimmer;
 import org.springframework.data.jpa.repository.JpaRepository;

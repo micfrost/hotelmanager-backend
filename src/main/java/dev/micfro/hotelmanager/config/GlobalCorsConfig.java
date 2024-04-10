@@ -15,8 +15,8 @@ public class GlobalCorsConfig {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
                         .allowedOrigins("http://localhost:3000") // Replace with the URL of your frontend
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS")
-                        .allowedHeaders("*")
+                        .allowedMethods("GET", "POST", "PUT", "DELETE" )
+//                        .allowedHeaders("*")
                         .allowCredentials(true);
             }
         };
