@@ -1,7 +1,9 @@
 package dev.micfro.hotelmanager.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
+import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
@@ -22,6 +24,8 @@ public class Hotelzimmer {
 
     private boolean isVerfuegbarkeit;
 
+    private static Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
+
     // Constructors
     public Hotelzimmer() {
     }
@@ -35,13 +39,15 @@ public class Hotelzimmer {
 
     // Getters and setters
 
-
     public Long getZimmernummer() {
         return zimmernummer;
     }
 
     public void setZimmernummer(Long zimmernummer) {
         this.zimmernummer = zimmernummer;
+        if (!validator.validate(this).isEmpty()) {
+            throw new ConstraintViolationException(validator.validate(this));
+        }
     }
 
     public Zimmergroesse getZimmergroesse() {
@@ -50,6 +56,9 @@ public class Hotelzimmer {
 
     public void setZimmergroesse(Zimmergroesse zimmergroesse) {
         this.zimmergroesse = zimmergroesse;
+        if (!validator.validate(this).isEmpty()) {
+            throw new ConstraintViolationException(validator.validate(this));
+        }
     }
 
     public boolean isMinibar() {
@@ -67,6 +76,4 @@ public class Hotelzimmer {
     public void setVerfuegbarkeit(boolean verfuegbarkeit) {
         isVerfuegbarkeit = verfuegbarkeit;
     }
-
-
 }
