@@ -1,7 +1,8 @@
-package dev.micfro.hotelmanager.restController;
+package dev.micfro.hotelmanager.controller;
 
-import dev.micfro.hotelmanager.entity.Hotelzimmer;
+import dev.micfro.hotelmanager.model.Hotelzimmer;
 import dev.micfro.hotelmanager.service.HotelzimmerService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,15 +41,16 @@ public class HotelzimmerRestController {
 
     // CREATE
     @PostMapping("/hotelzimmer")
-    public Hotelzimmer addHotelzimmer(@RequestBody Hotelzimmer theHotelzimmer) {
+    public Hotelzimmer addHotelzimmer(@Valid @RequestBody Hotelzimmer theHotelzimmer) {
         hotelzimmerService.save(theHotelzimmer);
         return theHotelzimmer;
     }
 
+
+
     // UPDATE
     @PutMapping("/hotelzimmer")
-    public Hotelzimmer updateHotelzimmer(@RequestBody Hotelzimmer theHotelzimmer) {
-
+    public Hotelzimmer updateHotelzimmer(@Valid @RequestBody Hotelzimmer theHotelzimmer) {
         return hotelzimmerService.update(theHotelzimmer);
     }
 

@@ -1,6 +1,6 @@
 package dev.micfro.hotelmanager.service.impl;
 
-import dev.micfro.hotelmanager.entity.Hotelzimmer;
+import dev.micfro.hotelmanager.model.Hotelzimmer;
 import dev.micfro.hotelmanager.repositor.HotelzimmerRepository;
 import dev.micfro.hotelmanager.service.HotelzimmerService;
 import jakarta.transaction.Transactional;

@@ -1,9 +1,8 @@
 package dev.micfro.hotelmanager.service;
 
-import dev.micfro.hotelmanager.entity.Hotelzimmer;
+import dev.micfro.hotelmanager.model.Hotelzimmer;
 
 import java.util.List;
-import java.util.Set;
 
 public interface HotelzimmerService {
 
