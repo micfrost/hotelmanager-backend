@@ -44,7 +44,7 @@ public class HotelzimmerServiceImpl implements HotelzimmerService {
         if (result.isPresent()) {
             hotelzimmer = result.get();
         } else {
-            throw new RuntimeException(" ---> SPRING RuntimeException: Hotelzimmer mit der Nummer " + theId + " wurde  leider nicht gefunden.");
+            throw new RuntimeException("Hotelzimmer mit der Nummer " + theId + " wurde  leider nicht gefunden.");
         }
         return hotelzimmer;
     }

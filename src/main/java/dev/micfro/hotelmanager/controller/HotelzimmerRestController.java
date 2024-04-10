@@ -39,7 +39,7 @@ public class HotelzimmerRestController {
         Hotelzimmer hotelzimmer = hotelzimmerService.findById(hotelzimmerId);
 
         if ((hotelzimmerId >= hotelzimmerService.findAll().size()+1) || (hotelzimmerId <= 0))  {
-            throw new HotelzimmerNotFoundExceptions(" ---> SPRING - HotelzimmerNotFoundExceptions. Hotelzimmer mit der Nummer " + hotelzimmerId + " wurde leider nicht gefunden.");
+            throw new HotelzimmerNotFoundExceptions("Hotelzimmer mit der Nummer " + hotelzimmerId + " wurde leider nicht gefunden.");
         }
 
         return hotelzimmer;
@@ -64,7 +64,7 @@ public class HotelzimmerRestController {
     public String deleteHotelzimmerById(@PathVariable Long hotelzimmerId) {
         Hotelzimmer hotelzimmer = hotelzimmerService.findById(hotelzimmerId);
         if ((hotelzimmerId >= hotelzimmerService.findAll().size()+1) || (hotelzimmerId <= 0))  {
-            throw new HotelzimmerNotFoundExceptions(" ---> SPRING - HotelzimmerNotFoundExceptions. Hotelzimmer mit der Nummer " + hotelzimmerId + " wurde leider nicht gefunden.");
+            throw new HotelzimmerNotFoundExceptions("Hotelzimmer mit der Nummer " + hotelzimmerId + " wurde leider nicht gefunden.");
         }
         hotelzimmerService.deleteById(hotelzimmerId);
         return "Hotelzimmer mit der Nummer " + hotelzimmerId + " wurde erfolgreich gelöscht.";
