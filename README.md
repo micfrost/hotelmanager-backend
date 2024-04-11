@@ -34,14 +34,22 @@ This is a backend application for managing hotel rooms, built with Spring Boot.
 
 
 
-## Endpoints
+## Endpoints API
 The application exposes the following REST endpoints:
 
-- `GET /api/hotelzimmer`: Fetch all hotel rooms.
-- `GET /api/hotelzimmer/{id}`: Fetch a specific hotel room by its ID.
-- `POST /api/hotelzimmer`: Add a new hotel room.
-- `PUT /api/hotelzimmer`: Update an existing hotel room.
-- `DELETE /api/hotelzimmer/{id}`: Delete a hotel room by its ID.
+
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**addHotelzimmer**](DefaultApi.md#addHotelzimmer) | **POST** /api/hotelzimmer | POST api/hotelzimmer |
+| [**deleteHotelzimmerById**](DefaultApi.md#deleteHotelzimmerById) | **DELETE** /api/hotelzimmer/{hotelzimmerId} | DELETE api/hotelzimmer/{hotelzimmerId} |
+| [**findAll**](DefaultApi.md#findAll) | **GET** /api/hotelzimmer | GET api/hotelzimmer |
+| [**getHotelzimmerById**](DefaultApi.md#getHotelzimmerById) | **GET** /api/hotelzimmer/{hotelzimmerId} | GET api/hotelzimmer/{hotelzimmerId} |
+| [**updateHotelzimmer**](DefaultApi.md#updateHotelzimmer) | **PUT** /api/hotelzimmer | PUT api/hotelzimmer |
+
+## API Documentation
+
+Interactive API documentation is available [here](http://localhost:8080/swagger-ui.html).
+
 
 ## Error Handling
 The application provides detailed error responses for various exceptions such as room not found, invalid request parameters, etc.
@@ -58,3 +66,10 @@ Created by Michal Frost.
 
 ![Screenshot from 2024-04-10 23-22-19.png](src%2Fmain%2Fresources%2FImagesDemo%2FScreenshot%20from%202024-04-10%2023-22-19.png)
 ![Screenshot from 2024-04-10 23-22-24.png](src%2Fmain%2Fresources%2FImagesDemo%2FScreenshot%20from%202024-04-10%2023-22-24.png)
+
+![Screenshot from 2024-04-11 10-23-08.png](src%2Fmain%2Fresources%2FImagesDemo%2FScreenshot%20from%202024-04-11%2010-23-08.png)
+
+## API Documentation
+
+Interactive API documentation is available [here](http://localhost:8080/swagger-ui.html).
+
