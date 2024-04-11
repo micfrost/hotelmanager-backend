@@ -1,0 +1,117 @@
+openapi: 3.0.3
+info:
+  description: hotelmanager_backend API
+  title: hotelmanager_backend API
+  version: 1.0.0
+servers:
+- url: https://hotelmanager_backend
+paths:
+  /api/hotelzimmer:
+    get:
+      operationId: findAll
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/Hotelzimmer'
+                type: array
+          description: OK
+      summary: GET api/hotelzimmer
+      x-accepts: '*/*'
+    post:
+      operationId: addHotelzimmer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hotelzimmer'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Hotelzimmer'
+          description: OK
+      summary: POST api/hotelzimmer
+      x-content-type: application/json
+      x-accepts: '*/*'
+    put:
+      operationId: updateHotelzimmer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Hotelzimmer'
+        required: true
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Hotelzimmer'
+          description: OK
+      summary: PUT api/hotelzimmer
+      x-content-type: application/json
+      x-accepts: '*/*'
+  /api/hotelzimmer/{hotelzimmerId}:
+    delete:
+      operationId: deleteHotelzimmerById
+      parameters:
+      - explode: false
+        in: path
+        name: hotelzimmerId
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                type: string
+          description: OK
+      summary: "DELETE api/hotelzimmer/{hotelzimmerId}"
+      x-accepts: '*/*'
+    get:
+      operationId: getHotelzimmerById
+      parameters:
+      - explode: false
+        in: path
+        name: hotelzimmerId
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Hotelzimmer'
+          description: OK
+      summary: "GET api/hotelzimmer/{hotelzimmerId}"
+      x-accepts: '*/*'
+components:
+  schemas:
+    Hotelzimmer:
+      example:
+        zimmernummer: 0
+        zimmergroesse: EINZELZIMMER
+      properties:
+        zimmernummer:
+          format: int64
+          type: integer
+        zimmergroesse:
+          enum:
+          - EINZELZIMMER
+          - DOPPELZIMMER
+          - SUITE
+          type: string
+      type: object
+

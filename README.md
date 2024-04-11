@@ -69,7 +69,5 @@ Created by Michal Frost.
 
 ![Screenshot from 2024-04-11 10-23-08.png](src%2Fmain%2Fresources%2FImagesDemo%2FScreenshot%20from%202024-04-11%2010-23-08.png)
 
-## API Documentation
-
 Interactive API documentation is available [here](http://localhost:8080/swagger-ui.html).
 
